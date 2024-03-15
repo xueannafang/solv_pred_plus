@@ -3,6 +3,7 @@
 
 log :
 
+- Create plot_corr function to do correlation plot for observable and selected (or all) descriptor. (Mar.15, 2024)
 - Create rm_zero function to remove invalid zero data of observables. (Mar.14, 2024)
 - Save meta data of load_data part, with full parameters. (Mar.15, 2024)
 - Enable hansen distance calculation. (Mar.15, 2024)
@@ -39,7 +40,11 @@ prod_hsp = {
 ```
 
 If Hansen distance needs to be calculated, specify ```hansen_dist_with``` variable: 
-```hansen_dist_with = [sm_hsp, prod_hsp]```, 
+
+```
+hansen_dist_with = [sm_hsp, prod_hsp]
+```
+, 
 
 and claim ```do_hansen_dist``` as ```True``` when calling ```load_exp_data``` function later.
 
@@ -106,3 +111,22 @@ To check further data fed into data processing pipline, call:
 ```
 spp.non_zero_comb
 ```
+(the dict version)
+
+or 
+
+```
+spp.non_zero_comb_df
+```
+(the dataframe version)
+
+
+- Generate correlation plot between selected (or all) descriptors with target observable ```Y```: 
+
+```
+spp.plot_corr(observable = "Y", plot_all = True, x_to_plot = ["D", "P", "H"], **kwarg)
+```
+
+Note that by default, all the descriptors will be selected and plot out.
+
+Descriptors can alternatively specified in the ```x_to_plot``` argument. (Make sure the descriptor name must match the one fed in the ```all_cand_param_csv``` file and data types are valid.)
