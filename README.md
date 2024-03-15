@@ -45,11 +45,15 @@ and claim ```do_hansen_dist``` as ```True``` when calling ```load_exp_data``` fu
 
 
 
-- Create an instance of ```SolvPredPlus```: 
+- Create an instance of ```SolvPredPlus``` and load candidate parameter database:
 
 ```
 spp = SolvPredPlus(all_cand_param_name)
 ```
+
+If successful, we expect to see
+
+```Loading candidate parameters: success.```
 
 - Load experimental data: 
 
@@ -58,6 +62,23 @@ spp.load_exp_data(ip_exp_csv_name, do_hansen_dist = True, hansen_dist_with = han
 
 ```
 (The above version will also calculate hansen distance as specified above.)
+
+Each entry will return a message looking like: 
+```
+Process Xf2346 starts..
+Calculate hansen distance with sm: success.
+Calculate hansen distance with prod: success.
+```
+
+If every entry is processed properly, we expect to see
+
+```Loading data: success.```
+
+If meta data has been saved, we will see 
+
+```
+op_exp_data_with_full_params.csv saved.
+```
 
 - Clean experimental data and remove invalid group:
 
@@ -73,6 +94,12 @@ We can compare the difference before and after cleaning dataset by looking at ho
 print(len(spp.all_comb_exp)) #expected as 31 in the example test case
 print(len(spp.non_zero_comb)) # expected as 24
 ```
+
+a successful message should say:
+```
+Remove invalid/zero data: success.
+```
+
 
 To check further data fed into data processing pipline, call: 
 
