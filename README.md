@@ -126,8 +126,12 @@ spp.non_zero_comb_df
 - Generate correlation plot between selected (or all) descriptors with target observable ```Y```: 
 
 ```
-spp.plot_corr(observable = "Y", plot_all = True, x_to_plot = ["D", "P", "H"], save_plot = True, **kwarg)
+spp.plot_corr(observable = "Y", plot_all = True, x_to_plot = ["D", "P", "H"], save_plot = True, do_std = False, **kwargs)
 ```
+
+In ```**kwargs```, we can specify whether to save meta data, by setting ```save_meta_data = True```. 
+
+The correlation matrix of descriptors (only) and descriptors with observables will be saved. 
 
 Note that by default, all the descriptors will be selected and plot out.
 
@@ -135,3 +139,22 @@ Descriptors can alternatively specified in the ```x_to_plot``` argument. (Make s
 
 We can decide to save figures or not by specifying ```save_plot``` argument. 
 Plots will be saved as "corr_plot_" followed by descriptor name in the output results folder.
+
+The ```x``` can be based on original data or standardised data by specifying ```do_std``` argument. 
+(Since this part is to look at relationship between individual variables with observable, there's not much difference between std or non-std pattern in the plot.)
+
+The standardisation will be carried out regardless. 
+
+The standardised dataset can be called by:
+
+```
+spp.all_std_df
+```
+
+A correlation plot among all descriptors will be presented too. 
+
+The correlation matrix of descriptors (only) can be called by:
+
+```
+spp.dscpt_df_corr
+```
