@@ -53,12 +53,14 @@ and claim ```do_hansen_dist``` as ```True``` when calling ```load_exp_data``` fu
 - Create an instance of ```SolvPredPlus``` and load candidate parameter database:
 
 ```
-spp = SolvPredPlus(all_cand_param_name)
+spp = SolvPredPlus(all_cand_param_csv, op_folder = "test")
 ```
 
 If successful, we expect to see
 
 ```Loading candidate parameters: success.```
+
+```op_folder``` argeument is the folder name for results, default ```test```.
 
 - Load experimental data: 
 
@@ -124,9 +126,12 @@ spp.non_zero_comb_df
 - Generate correlation plot between selected (or all) descriptors with target observable ```Y```: 
 
 ```
-spp.plot_corr(observable = "Y", plot_all = True, x_to_plot = ["D", "P", "H"], **kwarg)
+spp.plot_corr(observable = "Y", plot_all = True, x_to_plot = ["D", "P", "H"], save_plot = True, **kwarg)
 ```
 
 Note that by default, all the descriptors will be selected and plot out.
 
 Descriptors can alternatively specified in the ```x_to_plot``` argument. (Make sure the descriptor name must match the one fed in the ```all_cand_param_csv``` file and data types are valid.)
+
+We can decide to save figures or not by specifying ```save_plot``` argument. 
+Plots will be saved as "corr_plot_" followed by descriptor name in the output results folder.
