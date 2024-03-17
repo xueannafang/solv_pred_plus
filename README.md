@@ -214,3 +214,36 @@ In the test example, first two PCs are sufficient to cover key information of th
 We can now plot the loading of each feature on the first two PC space. 
 
 (To help with the visualisation, only 2D PCA map will be plot.)
+
+To get projections (loadings) of all descriptors in selected PC space, do
+
+```
+spp.get_pc_map(n_comp = 2, with_y = True, save_plot = True, save_meta_data = True)
+```
+
+We can modify ```n_comp``` if more than two PCs are required. 
+
+If ```with_y``` is ```True```, the PCA map will be coloured with observable values. 
+
+All plots will be auto-saved by default. 
+
+- Inverse target PC coordinate back to original descriptor space
+
+```
+spp.inv_pca_coord(n_comp = 2, pc_to_inv = [5, -1], save_meta_data = True)
+```
+
+Make sure ```n_comp``` must match the size of ```pc_to_inv```
+
+If succeeded, descriptors and corresponding value will be presented. 
+
+Meta data will be saved with target coordinate in the file name.
+
+```
+inverse_pca_df_5_-1.csv saved.
+```
+
+Full log can also be checked by
+```
+spp.inv_pca_full_log
+```
