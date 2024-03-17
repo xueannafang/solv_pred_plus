@@ -151,6 +151,13 @@ The standardised dataset can be called by:
 spp.all_std_df
 ```
 
+where the statistical destails (mean and std) of original dataset fed before standardisation can be checked by:
+```
+spp.zscore_info
+```
+The ```zscore_info``` is a dictionary containing numerical column names, mean and std of each column. 
+
+
 A correlation plot among all descriptors will be presented too. 
 
 The correlation matrix of descriptors (only) can be called by:
@@ -158,3 +165,52 @@ The correlation matrix of descriptors (only) can be called by:
 ```
 spp.dscpt_df_corr
 ```
+with zsocred df callable by
+```
+spp.dscpt_zscored_df
+```
+
+The correlation matrix of descriptors and observable can be called by:
+```
+spp.obs_with_dscpt_df_corr
+```
+and zsocred df:
+```
+spp.dscpt_with_obs_zscored_df
+```
+
+
+- Apply principal component analysis (PCA) and related operations.
+
+To start PCA analysis on full descriptor set:
+```
+spp.do_pca()
+```
+
+The default option will decompose the dataset into equivalent number of principal compoenents (PC), 
+i.e., if a ten-dimsensional descriptor set is submitted, 10 PCs will be decomposed. 
+
+In the first round, we recommend to use default settings to evaluate how many PCs to keep (cover ca. 80% explained variance ratio).
+
+If calculation succeeded, we will see
+```
+PCA starts...
+Original descriptors:['D', 'P', 'H', 'epsilon', 'pi_star', 'HBD', 'HBA', 'logP_solv', 'r_sm', 'r_prod']
+PCA completed. 
+ Please refer to pca_log for details.
+```
+
+Full calculation details can be found by:
+```
+spp.pca_log
+```
+
+Meta data (plot and csv of explained variance ratio, loading matrix, etc.) will also be saved by default. 
+
+- Confirm number of PC to keep, generate PCA map
+
+In the test example, first two PCs are sufficient to cover key information of the orginal feature space. 
+
+We can now plot the loading of each feature on the first two PC space. 
+
+(To help with the visualisation, only 2D PCA map will be plot.)
