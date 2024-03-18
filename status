@@ -1,0 +1,47 @@
+[33mcommit 9d2e9a06055a4c651f5fd44269111e7a5c2da21b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Xue Fang <sh19129@bristol.ac.uk>
+Date:   Fri Mar 15 18:02:51 2024 +0000
+
+    modified readme, add instruction on plot_corr
+
+[33mcommit de55dfe37fdb047dd946fd8b9c71ee38bb586ac7[m
+Author: Xue Fang <sh19129@bristol.ac.uk>
+Date:   Fri Mar 15 18:02:29 2024 +0000
+
+    create plot_corr function
+
+[33mcommit 5a5a2cd34484ecf82e368ac3c4338a1e5661f195[m
+Author: Xue Fang <sh19129@bristol.ac.uk>
+Date:   Fri Mar 15 17:03:23 2024 +0000
+
+    edited readme until rm_zero function
+
+[33mcommit ad960b3c71b2f562b4d814e22ce3756d45b3d375[m
+Author: Xue Fang <sh19129@bristol.ac.uk>
+Date:   Fri Mar 15 16:57:22 2024 +0000
+
+    include save meta data option, updated readme
+
+[33mcommit d0092d3c5df4ea2430264c4fbbf19f3e4ee0f88f[m
+Author: Xue Fang <sh19129@bristol.ac.uk>
+Date:   Fri Mar 15 14:59:45 2024 +0000
+
+    include calculate hansen distance function
+
+[33mcommit 98face14f8c814aa710c253760f3bf13bcdfb04d[m
+Author: Xue Fang <sh19129@bristol.ac.uk>
+Date:   Thu Mar 14 17:39:26 2024 +0000
+
+    updated readme log
+
+[33mcommit b64c13fc87af5253095dda97c0dc81c4a6a9666b[m
+Author: Xue Fang <sh19129@bristol.ac.uk>
+Date:   Thu Mar 14 17:28:20 2024 +0000
+
+    uploaded SolvPredPlus and related templates
+
+[33mcommit e7d768f6ed03ea73bbff6d52d460ef24895f2eb9[m
+Author: Xue Fang <sh19129@bristol.ac.uk>
+Date:   Wed Mar 13 14:28:16 2024 +0000
+
+    Initial commit

@@ -247,3 +247,60 @@ Full log can also be checked by
 ```
 spp.inv_pca_full_log
 ```
+
+(Note that the target PC coordinate, ```pc_to_inv```, in this version, is determined manually. User can select the coordinate based on the trend observed from the PCA map.
+This interface will be left open for automatic optimisation, depending on user's requriment.)
+
+- Feature selection by PCA loadings
+
+Now, we can evaluate the contribution of each descriptor to the PC we are interested in..
+
+```
+spp.sel_feature(n_comp = 2, pc_to_rank = 'PC1', abs_value = True)
+```
+
+```pc_to_rank``` is the PC axis we are looking at.
+
+By default, the absolute contribution, i.e., regardless of symbol, will be compared. (```abs_value = True```)
+
+If ```abs_value``` is set as ```False```, the loading will be compared only based on the exact value calculated in the loading matrix. 
+
+(Note that the strength of contribution is only represented by the absolute value. The symbol only determines postive or negative correlation.)
+
+No matter which mode was executed, the projection of selected PC axis will be stored in ```sel_feature_log```:
+
+```
+spp.sel_feature_log
+```
+
+The best descriptor will be identified as the one with highest projection on the selected PC axis. 
+The descriptor name and correpsonding projection will be presented to user and also stored in the log dictionary. 
+
+
+- Revisit the original feature space
+
+Once inverse PCA and feature selection both have been compeleted, we can check what is our feature of interest in the original high dimensional space. 
+
+```
+spp.hop_back_to_high_dim(sel_by = 0)
+```
+
+By default, the "feature of interest" is determined by the best feature selected in the feature selection step. 
+
+We can alternatively specify the target feature by setting ```sel_by``` as the descriptor name.
+
+For example ```sel_by = "r_sm"```. (Make sure the descriptor name must be valid, i.e., involved in the original dataset.)
+
+The function will return the value of selected feature in the original feature space (i.e., before the PCA transform).
+
+If succeed, we expect to see: 
+```
+The standardised value of {sel_by} in the original feature space is: {orig_feature_value}
+```
+
+For example, 
+
+```
+The standardised value of epsilon in the original feature space is: 2.29
+```
+
