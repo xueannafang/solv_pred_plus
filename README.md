@@ -478,8 +478,7 @@ The exact file number depending on how many descriptors, how many PCs we chose, 
 
 ## Cite this work
 
-This project is licensed under GPL-3.0.
-
 X. Fang, C. Saunders, E. Gale, N. Fey, C. F.J. Faul, SolvPredPlus - a data-driven inverse solvent design toolkit, 2024, https://github.com/xueannafang/solv_pred_plus.
 
-## Have fun!
+---
+This project is licensed under GPL-3.0.
