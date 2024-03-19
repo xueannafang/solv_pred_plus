@@ -1,5 +1,21 @@
-# solv_pred_plus
- Advanced version of SolvPred. Design solvents by selected features.
+# SolvPred+
+ Advanced version of SolvPred. Inverse dsign of solvents by selected features.
+
+## Background and comparison with previous versions
+
+SolvPred+ is a data-driven inverse solvent design workflow aiming to close the feedback loop for the development of novel materials. 
+
+This project is an extension package for solvent selection toolkit: [SolvPred v2.0](https://github.com/xueannafang/hsp_toolkit_solv_pred_v_2.0) (previous versions: [SolvPred prototype](https://github.com/xueannafang/hsp_toolkit_prototype)). 
+
+In the previous version, solvents are designed by Hansen solubility parameters, only. 
+
+The scope of solvent properties of interest is generalised in this version to fit more complicated situations. 
+
+In this extension version, solvents can be designed by additional features, such as dielectric constant, partition coefficient, etc. 
+
+In addition, first-hand observable information has been incooperated in this workflow, with feauture selection and dimensionalitiy reduction technique (PCA) involved. 
+
+Compared to [SolvPred v2.0](https://github.com/xueannafang/hsp_toolkit_solv_pred_v_2.0), ```SolvPred+``` is object-oriented, with more flexible interface with external input data. 
 
 
 ## How to..
@@ -455,5 +471,11 @@ If all the ```save_meta_data``` have been specified as ```True```, we expect to 
 
 The exact file number depending on how many descriptors, how many PCs we chose, etc...
 
+
+## Cite this work
+
+This project is licensed under GPL-3.0.
+
+X. Fang, C. Saunders, E. Gale, N. Fey, C. F.J. Faul, SolvPredPlus - a data-driven inverse solvent design toolkit, https://github.com/xueannafang/solv_pred_plus.
 
 ## Have fun!
