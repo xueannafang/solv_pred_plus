@@ -862,6 +862,9 @@ class SolvPredPlus:
                     vld_full_mixture_df = full_mixture_df.loc[full_mixture_df['valid'] == "True"]
                     vld_full_mixture_file_name = f"mixture_component_for_{target_feature}_{target_value:.2f}_{n_solv}_all_cand_valid.csv"
                     self._save_meta_data(vld_full_mixture_df, vld_full_mixture_file_name, keep_index = False)
+
+                    if len(vld_full_mixture_df['group']) == 0:
+                        print("Warning: No valid combinations can be predicted.\n Please try a different target. \n") 
             
         
         else:
