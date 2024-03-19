@@ -852,10 +852,16 @@ class SolvPredPlus:
             #see if we can connect to solv_pred
             self._calc_full_cand_mixture(n_solv, target_feature, target_value)
             if self.full_mixture_dict:
+                
                 if save_meta_data:
                     full_mixture_df = pd.DataFrame.from_dict(self.full_mixture_dict)
                     full_mixtue_file_name = f"mixture_component_for_{target_feature}_{target_value:.2f}_{n_solv}_all_cand.csv"
                     self._save_meta_data(full_mixture_df, full_mixtue_file_name, keep_index = False)
+
+                    #get valid results
+                    vld_full_mixture_df = full_mixture_df.loc[full_mixture_df['valid'] == "True"]
+                    vld_full_mixture_file_name = f"mixture_component_for_{target_feature}_{target_value:.2f}_{n_solv}_all_cand_valid.csv"
+                    self._save_meta_data(vld_full_mixture_df, vld_full_mixture_file_name, keep_index = False)
             
         
         else:
@@ -1049,7 +1055,7 @@ class SolvPredPlus:
         full_mixture_dict["real_result"] = []
         full_mixture_dict["error"] = []
         full_mixture_dict["error_percent"] = []
-        # full_mixture_dict["valid"] = []
+        full_mixture_dict["valid"] = []
 
         for i, solv_comb in enumerate(all_solv_comb):
 
@@ -1060,24 +1066,34 @@ class SolvPredPlus:
             solv_coeff_calc_detail_dict = self.solv_coeff_calc_detail #error and other calc detail
 
             if solv_coeff_dict and solv_coeff_calc_detail_dict:
-                full_mixture_dict["group"].append(i+1) #write group number
                 # full_mixture_dict["valid"].append("True")
+
+                perc_vld = True
+
 
                 for n in range(n_solv):
                     solv_n_name = solv_coeff_dict['cand'][n]
                     solv_n_ratio = solv_coeff_dict['ratio'][n]
+
+                    if solv_n_ratio < 0:
+                        perc_vld = False
+
                     solv_col_name = f"solvent_{n+1}"
                     full_mixture_dict[solv_col_name].append(solv_n_name)
                     percent_col_name = f"percent_{n+1}"
                     full_mixture_dict[percent_col_name].append(solv_n_ratio)
+
+                    
                 
                 real_result = solv_coeff_calc_detail_dict["real_rsl"][0]
                 error = solv_coeff_calc_detail_dict["calc_error"][0]
                 error_percent = solv_coeff_calc_detail_dict["percent_error"][0]
 
+                full_mixture_dict["group"].append(i+1) #write group number
                 full_mixture_dict["real_result"].append(real_result)
                 full_mixture_dict["error"].append(error)
                 full_mixture_dict["error_percent"].append(error_percent)
+                full_mixture_dict["valid"].append(str(perc_vld))
             
             
             else:

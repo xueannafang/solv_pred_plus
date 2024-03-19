@@ -445,6 +445,7 @@ mixture_component_for_epsilon_2.29_2_all_cand.csv saved.
 
 Example output for prediction based on all possibilties: [mixture_component_for_epsilon_2.29_2_all_cand.csv](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/mixture_component_for_epsilon_2.29_2_all_cand.csv).
 
+Valid outputs only: [mixture_component_for_epsilon_2.29_2_all_cand_valid.csv](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/mixture_component_for_epsilon_2.29_2_all_cand_valid.csv)
 
 ## All example outputs
 
