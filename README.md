@@ -1,23 +1,30 @@
 # solv_pred_plus
  Advanced version of SolvPred. Design solvents by selected features.
 
-log :
-
-- Create plot_corr function to do correlation plot for observable and selected (or all) descriptor. (Mar.15, 2024)
-- Create rm_zero function to remove invalid zero data of observables. (Mar.14, 2024)
-- Save meta data of load_data part, with full parameters. (Mar.15, 2024)
-- Enable hansen distance calculation. (Mar.15, 2024)
-- Enable mixture parameters calculation. (Mar.14, 2024)
-- Create SolvPredPlus. Complete the load_data function.(Mar.14, 2024)
 
 ## How to..
 
+- Load ```SolvPredPlus```:
+
+Start a terminal, make sure ```conda``` environment has been initialised (```conda init```). 
+
+```cd``` to the working directory where ```solv_pred_plus.py``` is stored, then type ```jupyter notebook```.
+
+Either create a new notebook and type
+
+```
+%run solv_pred_plus.py
+```
+
+, or directly make a copy of the example worksheet ```solv_pred_plus_working_example.ipynb``` ([here](https://github.com/xueannafang/solv_pred_plus/solv_pred_plus_working_example.ipynb)) and follow the instruction in the notebook (recommended).
+
+
 - Inputs:
 
-(1) Experimental data file
+(1) [Experimental data file](https://github.com/xueannafang/solv_pred_plus/input_exp_data.csv)
 ```ip_exp_csv_name = "input_exp_data.csv"```
 
-(2) Parameters of all candidate solvents
+(2) [Parameters of all candidate solvents](https://github.com/xueannafang/solv_pred_plus/all_candidates_param_at_rt.csv)
 ```all_cand_param_name "all_candidates_param_at_rt.csv"```
 
 (3) (Optional) Hansen parameters of species to compare with, for example, starting material (s.m.) or product (prod), to calculate Hansen distance with each candidate. The data should follow the following format: 
@@ -87,6 +94,8 @@ If meta data has been saved, we will see
 op_exp_data_with_full_params.csv saved.
 ```
 
+[op_exp_data_with_full_params.csv](https://github.com/xueannafang/solv_pred_plus/test_1/op_exp_data_with_full_params.csv)
+
 - Clean experimental data and remove invalid group:
 
 ```
@@ -140,6 +149,8 @@ Descriptors can alternatively specified in the ```x_to_plot``` argument. (Make s
 We can decide to save figures or not by specifying ```save_plot``` argument. 
 Plots will be saved as "corr_plot_" followed by descriptor name in the output results folder.
 
+Example correlation plot: [corr_plot_pi_star.png](https://github.com/xueannafang/solv_pred_plus/test_1/corr_plot_pi_star.png) (There will be 10 plots in total; the number of plots equals number of descriptors.)
+
 The ```x``` can be based on original data or standardised data by specifying ```do_std``` argument. 
 (Since this part is to look at relationship between individual variables with observable, there's not much difference between std or non-std pattern in the plot.)
 
@@ -160,6 +171,8 @@ The ```zscore_info``` is a dictionary containing numerical column names, mean an
 
 A correlation plot among all descriptors will be presented too. 
 
+Example correlation heatmap for all descriptors: [descriptor_heat_map.png](https://github.com/xueannafang/solv_pred_plus/test_1/descriptor_heat_map.png)
+
 The correlation matrix of descriptors (only) can be called by:
 
 ```
@@ -178,6 +191,13 @@ and zsocred df:
 ```
 spp.dscpt_with_obs_zscored_df
 ```
+
+Example correlation heatmap for all descriptors with observable: [obs_with_descriptor_heat_map.png](https://github.com/xueannafang/solv_pred_plus/test_1/obs_with_descriptor_heat_map.png).
+
+Full details of correlation matrix for descriptors: [corr_mat_of_descriptors_only.csv](https://github.com/xueannafang/solv_pred_plus/test_1/corr_mat_of_descriptors_only.csv).
+
+Full details of correlation matrix for descriptors and observable: [corr_mat_of_descriptors_with_observable.csv](https://github.com/xueannafang/solv_pred_plus/test_1/corr_mat_of_descriptors_with_observable.csv).
+
 
 
 - Apply principal component analysis (PCA) and related operations.
@@ -205,7 +225,17 @@ Full calculation details can be found by:
 spp.pca_log
 ```
 
-Meta data (plot and csv of explained variance ratio, loading matrix, etc.) will also be saved by default. 
+Meta data (plot and csv of explained variance ratio, loading matrix, etc.) will also be saved by default:
+
+Loading matrix plot: [pca_loading_matrix_n_10.png](https://github.com/xueannafang/solv_pred_plus/test_1/pca_loading_matrix_n_10.png).
+
+Full details of loading matrix: [pca_loading_matrix_n_10.csv](https://github.com/xueannafang/solv_pred_plus/test_1/pca_loading_matrix_n_10.csv).
+
+Scree plot (explained variance ratio of individual PC): [pca_scree_plot_n_10.png](https://github.com/xueannafang/solv_pred_plus/test_1/pca_scree_plot_n_10.png).
+
+Full details of scree plot (explained variance ratio of individual PC): [pca_scree_plot_n_10.csv](https://github.com/xueannafang/solv_pred_plus/test_1/pca_scree_plot_n_10.csv).
+
+
 
 - Confirm number of PC to keep, generate PCA map
 
@@ -225,7 +255,16 @@ We can modify ```n_comp``` if more than two PCs are required.
 
 If ```with_y``` is ```True```, the PCA map will be coloured with observable values. 
 
-All plots will be auto-saved by default. 
+All plots will be auto-saved by default:
+
+Example PCA map of PC1-PC2 space: [pca_map_with_obs_3d_biplot_PC1_PC2.png](https://github.com/xueannafang/solv_pred_plus/test_1/pca_map_with_obs_3d_biplot_PC1_PC2.png).
+
+Descriptor loadings on PC1-PC2 axis: [pca_map_3d_loading_PC1_PC2.png](https://github.com/xueannafang/solv_pred_plus/test_1/pca_map_3d_loading_PC1_PC2.png).
+
+Example PCA map of PC2-PC3 space: [pca_map_with_obs_3d_biplot_PC2_PC3.png](https://github.com/xueannafang/solv_pred_plus/test_1/pca_map_with_obs_3d_biplot_PC2_PC3.png).
+
+Descriptor loadings on PC2-PC3 axis: [pca_map_3d_loading_PC2_PC3.png](https://github.com/xueannafang/solv_pred_plus/test_1/pca_map_3d_loading_PC2_PC3.png).
+
 
 - Inverse target PC coordinate back to original descriptor space
 
@@ -242,6 +281,10 @@ Meta data will be saved with target coordinate in the file name.
 ```
 inverse_pca_df_5_-1.csv saved.
 ```
+
+Example inverse pca prediction: [inverse_pca_df_5_-1.csv](https://github.com/xueannafang/solv_pred_plus/test_1/inverse_pca_df_5_-1.csv).
+
+
 
 Full log can also be checked by
 ```
@@ -276,6 +319,25 @@ spp.sel_feature_log
 The best descriptor will be identified as the one with highest projection on the selected PC axis. 
 The descriptor name and correpsonding projection will be presented to user and also stored in the log dictionary. 
 
+For the command above, we expect to see:
+```
+The absolute projection of all descriptors on PC1 axis is: 
+
+epsilon      0.983794
+logP_solv    0.972463
+pi_star      0.924214
+P            0.864230
+D            0.749329
+r_prod       0.434760
+r_sm         0.408919
+HBA          0.266419
+HBD          0.175824
+H            0.143636
+Name: PC1, dtype: float64
+The best descriptor is: epsilon. 
+ Projection: 0.9837942569191095. 
+```
+
 
 - Revisit the original feature space
 
@@ -304,3 +366,93 @@ For example,
 The standardised value of epsilon in the original feature space is: 2.29
 ```
 
+
+- Work out coefficients of candidate solvents.
+
+In the final step, we will do the prediction of potential solvent combination that could lead to the target value.
+
+```
+spp.pred_mixture(n_solv = 2, target_feature = "default", target_value = "default", pred_mode = "closest", save_meta_data = True, **kwargs)
+```
+
+By default, a binary mixture (```n_solv = 2```) based on the best feature selected by PCA (```target_feature``` at ```target_value```) will be predicted. 
+The default two candidates are selected by the candidates that are ```closest``` to the ```target_value``` in the candidate set. 
+Meta data will be saved automatically:
+
+Two ```.csv``` file containing predicted solvent components and calculation details (including real feature value, deviation from target) will be stored.
+
+Example output for predicted solvent components: [mixture_component_for_epsilon_2.29_2_cand.csv](https://github.com/xueannafang/solv_pred_plus/test_1/mixture_component_for_epsilon_2.29_2_cand.csv).
+
+Example output for prediction details (results, error, etc.): [mixture_calculation_info_for_epsilon_2.29_2_cand.csv](https://github.com/xueannafang/solv_pred_plus/test_1/mixture_calculation_info_for_epsilon_2.29_2_cand.csv).
+
+If succeeded, we expect to see:
+
+```
+['DMSO', 'DMAC'] [2.33598192759192, 1.577976283157882]
+First 2 closest candidates: 
+
+solvent
+DMSO    0.044486
+DMAC    0.713520
+Name: epsilon, dtype: float64
+['DMSO', 'DMAC'] [2.33598192759192, 1.577976283157882]
+Calculating mixture coefficient...
+
+Done.
+
+Coefficient matrix: [array([0.59683364]), array([0.40316636])].
+
+Calculation details: 
+
+{'real_rsl': array([2.03037955]), 'calc_error': array([-0.26111667]), 'percent_error': array([-0.11395029])}
+{'cand': ['DMSO', 'DMAC'], 'ratio': [0.5968336404757916, 0.40316635952420843]}
+mixture_component_for_epsilon_2.29_2_cand.csv saved.
+mixture_calculation_info_for_epsilon_2.29_2_cand.csv saved.
+```
+
+The results means a mixture of DMSO (60%) and DMAC (40%) has been constructed. 
+The real ```epsilon``` is 2.03, minus 0.26 from the target epsilon: 2.29.
+
+Full results can be found in two csv suggested in the output message. 
+
+
+An alternative prediction mode is by suggesting solvent candidate manually. 
+
+That can be done by specifying the ```pred_mode``` as ```"specify"```, and feed the solvent name in the kwargs using ```solv_cand = ['solv_name_1', 'solv_name_2']```:
+
+```
+spp.pred_mixture(n_solv = 2, pred_mode = "specify", solv_cand = ['DMSO', 'DMAC'])
+```
+
+The number of candidates can be modified by varying ```n_solv``` variable. 
+
+Make sure the number suggested in ```solv_cand``` argument must match the number used for ```n_solv```. 
+
+The ```n_solv``` can also be varied in the default mode. 
+
+If ```pred_mode``` is set as ```"full"```, all the possible combinations based on the candidate set will be attempted:
+
+```
+spp.pred_mixture(n_solv = 2, target_feature = "default", target_value = "default", pred_mode = "full")
+```
+
+If the prediction is successful, we expect to see a list of possible solvent combinations that could led to the target feature value.
+
+The result will be saved with a ```.csv``` file ended by ```all_cand```.
+```
+mixture_component_for_epsilon_2.29_2_all_cand.csv saved.
+```
+
+Example output for prediction based on all possibilties: [mixture_component_for_epsilon_2.29_2_all_cand.csv](https://github.com/xueannafang/solv_pred_plus/test_1/mixture_component_for_epsilon_2.29_2_all_cand.csv).
+
+
+## All example outputs
+
+If all the ```save_meta_data``` have been specified as ```True```, we expect to see apprx. 26 files in the output folder named by ourselves (when creating the instance of ```SolvPredPlus```):
+
+[test_1](https://github.com/xueannafang/solv_pred_plus/test_1)
+
+The exact file number depending on how many descriptors, how many PCs we chose, etc...
+
+
+## Have fun!

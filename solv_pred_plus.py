@@ -6,6 +6,7 @@ from scipy.stats import zscore
 from matplotlib.colors import ListedColormap
 from sklearn.decomposition import PCA
 import os
+from itertools import combinations
 
 
 class SolvPredPlus:
@@ -773,7 +774,9 @@ class SolvPredPlus:
         target_feature: default self.high_dim_log["sel_by"]
         target_value: default self.high_dim_log["orig_feature_value"]
         pred_mode: default "closest" -> find the closest candidates based on the difference between std_cand_set from the target
-        save_meta_data: default True
+        pred_mode: "specify" -> specify target candidates using keywords: solv_cand = [solv_cand_name_1, solv_cand_name_2, ...]
+        pred_mode: "full" -> prediction will be made by all possibilities of candidate combinations.
+        save_meta_data: default True, predicted solvent combinations and calculated feature value and error information will be stored in two spreadsheets.
         """
         
         if target_feature == "default":
@@ -843,13 +846,17 @@ class SolvPredPlus:
             
             else:
                 raise ValueError(f"Please specify {n_solv} solvent candidates using keyword: solv_cand = [your solvent names]. \n")
-                
-            pass
         
         elif pred_mode == "full":
             #do full prediction by iterating through all candidates
             #see if we can connect to solv_pred
-            pass
+            self._calc_full_cand_mixture(n_solv, target_feature, target_value)
+            if self.full_mixture_dict:
+                if save_meta_data:
+                    full_mixture_df = pd.DataFrame.from_dict(self.full_mixture_dict)
+                    full_mixtue_file_name = f"mixture_component_for_{target_feature}_{target_value:.2f}_{n_solv}_all_cand.csv"
+                    self._save_meta_data(full_mixture_df, full_mixtue_file_name, keep_index = False)
+            
         
         else:
             raise ValueError("Invalid pred_mode. Options: [closest, specify, full]. \n")
@@ -949,10 +956,6 @@ class SolvPredPlus:
             return
         
 
-
-
-        return coeff_solv
-
     def _norm_coeff(self, all_coeff):
         """
         normalise each coefficient
@@ -1013,4 +1016,76 @@ class SolvPredPlus:
         
         print(solv_coeff_dict)
         return solv_coeff_dict
+    
+
+    def _get_all_solv_cand_comb(self, n_solv):
+        """
+        iterate through the candidate set and pick out all n_solv combinations
+        """
+        all_solv_cand = list(self.std_cand_set.index) # a list of all candidate solvents
+        # print(all_solv_cand)
+        all_solv_comb = combinations(all_solv_cand, n_solv)
+        return all_solv_comb
+    
+    def _calc_full_cand_mixture(self, n_solv, target_feature, target_value):
+        """
+        calculate solvent mixtures based on all combinations for the "full" pred_mode
+        """
+        all_solv_comb = self._get_all_solv_cand_comb(n_solv)
+        
+        #iterate and do normal mixture calculation cycle
+        
+        #initialise result dict
+        full_mixture_dict = {
+            "group":[]
+        }
+
+        for n in range(n_solv):
+            solv_col_name = f"solvent_{n+1}"
+            full_mixture_dict[solv_col_name] = []
+            percent_col_name = f"percent_{n+1}"
+            full_mixture_dict[percent_col_name] = []
+        
+        full_mixture_dict["real_result"] = []
+        full_mixture_dict["error"] = []
+        full_mixture_dict["error_percent"] = []
+        # full_mixture_dict["valid"] = []
+
+        for i, solv_comb in enumerate(all_solv_comb):
+
+            solv_name = list(solv_comb) #convert tuple to list
+            n_cands, n_values = self._get_value_for_solvent(solv_name, target_feature) #get cand name and original feature value
+            self._calc_norm_solv_coeff(n_solv, n_values, target_value)
+            solv_coeff_dict = self._gen_solv_coeff_dict(n_cands) # coeff of this combination detail
+            solv_coeff_calc_detail_dict = self.solv_coeff_calc_detail #error and other calc detail
+
+            if solv_coeff_dict and solv_coeff_calc_detail_dict:
+                full_mixture_dict["group"].append(i+1) #write group number
+                # full_mixture_dict["valid"].append("True")
+
+                for n in range(n_solv):
+                    solv_n_name = solv_coeff_dict['cand'][n]
+                    solv_n_ratio = solv_coeff_dict['ratio'][n]
+                    solv_col_name = f"solvent_{n+1}"
+                    full_mixture_dict[solv_col_name].append(solv_n_name)
+                    percent_col_name = f"percent_{n+1}"
+                    full_mixture_dict[percent_col_name].append(solv_n_ratio)
+                
+                real_result = solv_coeff_calc_detail_dict["real_rsl"][0]
+                error = solv_coeff_calc_detail_dict["calc_error"][0]
+                error_percent = solv_coeff_calc_detail_dict["percent_error"][0]
+
+                full_mixture_dict["real_result"].append(real_result)
+                full_mixture_dict["error"].append(error)
+                full_mixture_dict["error_percent"].append(error_percent)
             
+            
+            else:
+                pass
+                # full_mixture_dict["valid"].append("False")
+        if len(full_mixture_dict["group"]) != 0:
+            print("Full prediction: done.\n")
+            self.full_mixture_dict = full_mixture_dict
+            # return full_mixture_dict
+        else:
+            raise ValueError("No valid combinations. Please try another target feature value. \n")
