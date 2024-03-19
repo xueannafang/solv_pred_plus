@@ -16,15 +16,15 @@ Either create a new notebook and type
 %run solv_pred_plus.py
 ```
 
-, or directly make a copy of the example worksheet ```solv_pred_plus_working_example.ipynb``` ([here](https://github.com/xueannafang/solv_pred_plus/solv_pred_plus_working_example.ipynb)) and follow the instruction in the notebook (recommended).
+, or directly make a copy of the example worksheet ```solv_pred_plus_working_example.ipynb``` ([here](https://github.com/xueannafang/solv_pred_plus/blob/main/solv_pred_plus_working_example.ipynb)) and follow the instruction in the notebook (recommended).
 
 
 - Inputs:
 
-(1) [Experimental data file](https://github.com/xueannafang/solv_pred_plus/input_exp_data.csv)
+(1) [Experimental data file](https://github.com/xueannafang/solv_pred_plus/blob/main/input_exp_data.csv)
 ```ip_exp_csv_name = "input_exp_data.csv"```
 
-(2) [Parameters of all candidate solvents](https://github.com/xueannafang/solv_pred_plus/all_candidates_param_at_rt.csv)
+(2) [Parameters of all candidate solvents](https://github.com/xueannafang/solv_pred_plus/blob/main/all_candidates_param_at_rt.csv)
 ```all_cand_param_name "all_candidates_param_at_rt.csv"```
 
 (3) (Optional) Hansen parameters of species to compare with, for example, starting material (s.m.) or product (prod), to calculate Hansen distance with each candidate. The data should follow the following format: 
@@ -94,7 +94,7 @@ If meta data has been saved, we will see
 op_exp_data_with_full_params.csv saved.
 ```
 
-[op_exp_data_with_full_params.csv](https://github.com/xueannafang/solv_pred_plus/test_1/op_exp_data_with_full_params.csv)
+[op_exp_data_with_full_params.csv](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/op_exp_data_with_full_params.csv)
 
 - Clean experimental data and remove invalid group:
 
@@ -149,7 +149,7 @@ Descriptors can alternatively specified in the ```x_to_plot``` argument. (Make s
 We can decide to save figures or not by specifying ```save_plot``` argument. 
 Plots will be saved as "corr_plot_" followed by descriptor name in the output results folder.
 
-Example correlation plot: [corr_plot_pi_star.png](https://github.com/xueannafang/solv_pred_plus/test_1/corr_plot_pi_star.png) (There will be 10 plots in total; the number of plots equals number of descriptors.)
+Example correlation plot: [corr_plot_pi_star.png](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/corr_plot_pi_star.png) (There will be 10 plots in total; the number of plots equals number of descriptors.)
 
 The ```x``` can be based on original data or standardised data by specifying ```do_std``` argument. 
 (Since this part is to look at relationship between individual variables with observable, there's not much difference between std or non-std pattern in the plot.)
@@ -171,7 +171,7 @@ The ```zscore_info``` is a dictionary containing numerical column names, mean an
 
 A correlation plot among all descriptors will be presented too. 
 
-Example correlation heatmap for all descriptors: [descriptor_heat_map.png](https://github.com/xueannafang/solv_pred_plus/test_1/descriptor_heat_map.png)
+Example correlation heatmap for all descriptors: [descriptor_heat_map.png](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/descriptor_heat_map.png)
 
 The correlation matrix of descriptors (only) can be called by:
 
@@ -192,11 +192,11 @@ and zsocred df:
 spp.dscpt_with_obs_zscored_df
 ```
 
-Example correlation heatmap for all descriptors with observable: [obs_with_descriptor_heat_map.png](https://github.com/xueannafang/solv_pred_plus/test_1/obs_with_descriptor_heat_map.png).
+Example correlation heatmap for all descriptors with observable: [obs_with_descriptor_heat_map.png](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/obs_with_descriptor_heat_map.png).
 
-Full details of correlation matrix for descriptors: [corr_mat_of_descriptors_only.csv](https://github.com/xueannafang/solv_pred_plus/test_1/corr_mat_of_descriptors_only.csv).
+Full details of correlation matrix for descriptors: [corr_mat_of_descriptors_only.csv](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/corr_mat_of_descriptors_only.csv).
 
-Full details of correlation matrix for descriptors and observable: [corr_mat_of_descriptors_with_observable.csv](https://github.com/xueannafang/solv_pred_plus/test_1/corr_mat_of_descriptors_with_observable.csv).
+Full details of correlation matrix for descriptors and observable: [corr_mat_of_descriptors_with_observable.csv](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/corr_mat_of_descriptors_with_observable.csv).
 
 
 
@@ -227,13 +227,13 @@ spp.pca_log
 
 Meta data (plot and csv of explained variance ratio, loading matrix, etc.) will also be saved by default:
 
-Loading matrix plot: [pca_loading_matrix_n_10.png](https://github.com/xueannafang/solv_pred_plus/test_1/pca_loading_matrix_n_10.png).
+Loading matrix plot: [pca_loading_matrix_n_10.png](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/pca_loading_matrix_n_10.png).
 
-Full details of loading matrix: [pca_loading_matrix_n_10.csv](https://github.com/xueannafang/solv_pred_plus/test_1/pca_loading_matrix_n_10.csv).
+Full details of loading matrix: [pca_loading_matrix_n_10.csv](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/pca_loading_matrix_n_10.csv).
 
-Scree plot (explained variance ratio of individual PC): [pca_scree_plot_n_10.png](https://github.com/xueannafang/solv_pred_plus/test_1/pca_scree_plot_n_10.png).
+Scree plot (explained variance ratio of individual PC): [pca_scree_plot_n_10.png](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/pca_scree_plot_n_10.png).
 
-Full details of scree plot (explained variance ratio of individual PC): [pca_scree_plot_n_10.csv](https://github.com/xueannafang/solv_pred_plus/test_1/pca_scree_plot_n_10.csv).
+Full details of scree plot (explained variance ratio of individual PC): [pca_scree_plot_n_10.csv](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/pca_scree_plot_n_10.csv).
 
 
 
@@ -257,13 +257,13 @@ If ```with_y``` is ```True```, the PCA map will be coloured with observable valu
 
 All plots will be auto-saved by default:
 
-Example PCA map of PC1-PC2 space: [pca_map_with_obs_3d_biplot_PC1_PC2.png](https://github.com/xueannafang/solv_pred_plus/test_1/pca_map_with_obs_3d_biplot_PC1_PC2.png).
+Example PCA map of PC1-PC2 space: [pca_map_with_obs_3d_biplot_PC1_PC2.png](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/pca_map_with_obs_3d_biplot_PC1_PC2.png).
 
-Descriptor loadings on PC1-PC2 axis: [pca_map_3d_loading_PC1_PC2.png](https://github.com/xueannafang/solv_pred_plus/test_1/pca_map_3d_loading_PC1_PC2.png).
+Descriptor loadings on PC1-PC2 axis: [pca_map_3d_loading_PC1_PC2.png](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/pca_map_3d_loading_PC1_PC2.png).
 
-Example PCA map of PC2-PC3 space: [pca_map_with_obs_3d_biplot_PC2_PC3.png](https://github.com/xueannafang/solv_pred_plus/test_1/pca_map_with_obs_3d_biplot_PC2_PC3.png).
+Example PCA map of PC2-PC3 space: [pca_map_with_obs_3d_biplot_PC2_PC3.png](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/pca_map_with_obs_3d_biplot_PC2_PC3.png).
 
-Descriptor loadings on PC2-PC3 axis: [pca_map_3d_loading_PC2_PC3.png](https://github.com/xueannafang/solv_pred_plus/test_1/pca_map_3d_loading_PC2_PC3.png).
+Descriptor loadings on PC2-PC3 axis: [pca_map_3d_loading_PC2_PC3.png](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/pca_map_3d_loading_PC2_PC3.png).
 
 
 - Inverse target PC coordinate back to original descriptor space
@@ -282,7 +282,7 @@ Meta data will be saved with target coordinate in the file name.
 inverse_pca_df_5_-1.csv saved.
 ```
 
-Example inverse pca prediction: [inverse_pca_df_5_-1.csv](https://github.com/xueannafang/solv_pred_plus/test_1/inverse_pca_df_5_-1.csv).
+Example inverse pca prediction: [inverse_pca_df_5_-1.csv](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/inverse_pca_df_5_-1.csv).
 
 
 
@@ -381,9 +381,9 @@ Meta data will be saved automatically:
 
 Two ```.csv``` file containing predicted solvent components and calculation details (including real feature value, deviation from target) will be stored.
 
-Example output for predicted solvent components: [mixture_component_for_epsilon_2.29_2_cand.csv](https://github.com/xueannafang/solv_pred_plus/test_1/mixture_component_for_epsilon_2.29_2_cand.csv).
+Example output for predicted solvent components: [mixture_component_for_epsilon_2.29_2_cand.csv](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/mixture_component_for_epsilon_2.29_2_cand.csv).
 
-Example output for prediction details (results, error, etc.): [mixture_calculation_info_for_epsilon_2.29_2_cand.csv](https://github.com/xueannafang/solv_pred_plus/test_1/mixture_calculation_info_for_epsilon_2.29_2_cand.csv).
+Example output for prediction details (results, error, etc.): [mixture_calculation_info_for_epsilon_2.29_2_cand.csv](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/mixture_calculation_info_for_epsilon_2.29_2_cand.csv).
 
 If succeeded, we expect to see:
 
@@ -443,14 +443,14 @@ The result will be saved with a ```.csv``` file ended by ```all_cand```.
 mixture_component_for_epsilon_2.29_2_all_cand.csv saved.
 ```
 
-Example output for prediction based on all possibilties: [mixture_component_for_epsilon_2.29_2_all_cand.csv](https://github.com/xueannafang/solv_pred_plus/test_1/mixture_component_for_epsilon_2.29_2_all_cand.csv).
+Example output for prediction based on all possibilties: [mixture_component_for_epsilon_2.29_2_all_cand.csv](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1/mixture_component_for_epsilon_2.29_2_all_cand.csv).
 
 
 ## All example outputs
 
 If all the ```save_meta_data``` have been specified as ```True```, we expect to see apprx. 26 files in the output folder named by ourselves (when creating the instance of ```SolvPredPlus```):
 
-[test_1](https://github.com/xueannafang/solv_pred_plus/test_1)
+[test_1](https://github.com/xueannafang/solv_pred_plus/blob/main/test_1)
 
 The exact file number depending on how many descriptors, how many PCs we chose, etc...
 
