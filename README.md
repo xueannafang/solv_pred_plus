@@ -2,7 +2,7 @@
  Advanced version of SolvPred. Inverse dsign of solvents by selected features.
 
 <p>
- <img src=https://github.com/xueannafang/solv_pred_plus/blob/main/sp_plus_2.png width=100>
+ <img src=https://github.com/xueannafang/solv_pred_plus/blob/main/sp_plus_2.png width=200>
  </p>
 
 ## Background and comparison with previous versions
