@@ -1,6 +1,10 @@
 # SolvPred+
  Advanced version of SolvPred. Inverse dsign of solvents by selected features.
 
+<p>
+ <img src=https://github.com/xueannafang/solv_pred_plus/blob/main/sp_plus_2.png width=100>
+ </p>
+
 ## Background and comparison with previous versions
 
 SolvPred+ is a data-driven inverse solvent design workflow aiming to close the feedback loop for the development of novel materials. 
