@@ -320,6 +320,8 @@ For example, we can integrate active learning to propose the next coordinate, wi
 
 [Example notebook using BayesianOptimization](https://github.com/xueannafang/solv_pred_plus/blob/main/extension_sel_next_PC_by_BO.ipynb)
 
+Another Bayesian example with [dim-reduced PC weighted by correlation with target observable](https://github.com/xueannafang/learn_opt/blob/main/real_life_test_multi_dim_PCA_GP_UCB.ipynb).
+
 (A few basics for Bayesian optimisation is summarised in this repo: [learn_opt](https://github.com/xueannafang/learn_opt)).
 
 - Feature selection by PCA loadings
