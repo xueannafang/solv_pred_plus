@@ -316,9 +316,9 @@ Note that the target PC coordinate, ```pc_to_inv```, in this version, is determi
 This interface will be left open for automatic optimisation, depending on user's requriment.
 For example, we can integrate active learning to propose the next coordinate, with working examples using Bayesian optimisation:
 
-[version 1: dimension-reduced PC weighted by correlation](https://github.com/xueannafang/learn_opt/blob/main/real_life_test_multi_dim_PCA_GP_UCB.ipynb)
+<!-- [version 1: dimension-reduced PC weighted by correlation](https://github.com/xueannafang/learn_opt/blob/main/real_life_test_multi_dim_PCA_GP_UCB.ipynb) -->
 
-[version 2: separately predict two PCs](https://github.com/xueannafang/solv_pred_plus/blob/main/extension_sel_next_PC_by_BO.ipynb)
+[Example notebook using BayesianOptimization](https://github.com/xueannafang/solv_pred_plus/blob/main/extension_sel_next_PC_by_BO.ipynb)
 
 (A few basics for Bayesian optimisation is summarised in this repo: [learn_opt](https://github.com/xueannafang/learn_opt)).
 
