@@ -488,7 +488,9 @@ The exact file number depending on how many descriptors, how many PCs we chose, 
 
 ## Cite this work
 
-X. Fang, C. Saunders, E. Gale, N. Fey, C. F.J. Faul, SolvPredPlus - a data-driven inverse solvent design toolkit, 2024, https://github.com/xueannafang/solv_pred_plus.
+- X. Fang, C. Saunders, E. Gale, N. Fey, C. F.J. Faul, SolvPredPlus - a data-driven inverse solvent design toolkit, 2024, https://github.com/xueannafang/solv_pred_plus.
+
+- X. Fang, C. F. J. Faul, N. Fey, [Development of Solvent Selection Methods for Functional Materials Preparation](https://research-information.bris.ac.uk/en/studentTheses/development-of-solvent-selection-methods-for-functional-materials), University of Bristol (PhD Dissertation), 4 Feb 2025.
 
 ---
 This project is licensed under GPL-3.0.
